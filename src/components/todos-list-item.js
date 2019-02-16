@@ -53,7 +53,7 @@ export default class TodosListItem extends React.Component {
         const { value } = e.target;
         IsCompleted = value
         console.log(IsCompleted, 'is')
-        // this.setState({status: value})
+        this.setState({status: value})
     }
     ChangeStatus() {
         const { isCompleted } = this.props;
@@ -61,6 +61,7 @@ export default class TodosListItem extends React.Component {
             return (
                 <td>
                     <select className="select-style" onChange={(e) => this.ChangeTaskStatus(e)}
+                    value={this.state.status}
                     >
                         <option disabled value="">Change Status</option>
                         <option value='1'>Completed</option>
@@ -96,7 +97,7 @@ export default class TodosListItem extends React.Component {
     }
 
     editTask(e) {
-        this.props.editTask(this.props.id, this.refs.task.value, IsCompleted);
+        this.props.editTask(this.props.id, this.refs.task.value, this.state.status);
         this.setState({
             isEditing: false
         });
