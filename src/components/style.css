@@ -1,16 +1,3 @@
-div#root {
-  box-shadow: 0 3px 5px rgba(0,0,0,.1);
-}
-
-#root {
-  max-width: 100%;
-  width: 900px;
-  margin: 2em auto;
-  background: #fff;
-  padding: 1em;
-}
-
-
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico');
 
 * {
@@ -82,6 +69,10 @@ th, td {
 table {
     width: 100%;
 }
+table {
+    border: 1px solid #e7ebee;
+}
+
 
 p.tutorial {
     padding: 10px;
@@ -124,36 +115,8 @@ tr > td:first-of-type {
 tr > td > form > input {
     width: 100%;
 }
-.TodoTR{
-    width: 100% !important;
-}
-.TodoTH1{
-    width: 33.33% !important;
-}
-.TodoTH2{
-    width: 33.33% !important;
-}
-.TodoTH3{
-    width: 33.33% !important;
-}
-th.TodoTH2 {
-    text-align: center !important;
-}
-.taskStatus {
-    padding: 7px !important;
-    background-color: green !important;
-    color: #fff !important;
-    border-radius: 20px !important;
-    font-size: 10px !important;
-}
-.not-taskStatus{
-    padding: 7px !important;
-    background-color: red !important;
-    color: #fff !important;
-    border-radius: 20px !important;
-    font-size: 10px !important;
-}
 
 .delete-btn, .cancel-btn {
     background-color: #e74c3c;
 }
+
