@@ -19,6 +19,7 @@ const todos = {
     },
     save () {
         localStorage.setItem(this.lsKey, JSON.stringify(this.items));
+
     },
     toggle (id) {
         let todoItem = this.items[id];
@@ -58,7 +59,8 @@ class App extends React.Component {
 
 
         this.state = {
-            todos: todos.items
+            todos: todos.items,
+            Length: 0
         };
     }
     search(e){
@@ -92,7 +94,8 @@ class App extends React.Component {
                 <button onClick={()=>this.Completed(1)}>Active</button>
                 <button onClick={()=>this.Completed(0)}>Completed</button>
                 <input placeholder="search..." onChange={(e)=>this.search(e)}></input>
-
+                <br></br>
+                <p>Display number of items left to be completed: <span style={{color: 'green', fontWeight:'600', fontSize: '18px'}}>{this.state.Length}</span></p>
                 <CreateTodo
                     createTask={this.createTask.bind(this)}
                 />
@@ -105,7 +108,16 @@ class App extends React.Component {
             </div>
         );
     }
-
+    componentDidMount(){
+        this.getActivetasks()
+    }
+    getActivetasks(){
+        console.log(todos.get(),'hiiiiii')
+        let data = todos.get();
+        let datalength = []
+        datalength = data.filter(item => item.isCompleted === '0')
+        this.setState({Length: datalength.length})
+    }
     createTask (task) {
         task = task.trim();
         if (!task) { return; }
@@ -124,10 +136,12 @@ class App extends React.Component {
         todos.update(taskId, task, isCompleted);
         console.log(isCompleted,'hi')
         this.setState({ todos: this.state.todos });
+        this.getActivetasks()
     }
     deleteTask (taskId) {
         todos.remove(taskId);
         this.setState({ todos: this.state.todos });
+        this.getActivetasks()
     }
 }
 // const mapDispatchToProps = {
