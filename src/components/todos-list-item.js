@@ -7,21 +7,21 @@ export default class TodosListItem extends React.Component {
         this.state = {
             isEditing: false,
             taskStatus: "",
-            status:""
+            status: ""
         };
     }
-   
+
     renderActionSection() {
         if (this.state.isEditing) {
             return (
-                <td>
+                <td className="TodoTH3">
                     <button onClick={this.editTask.bind(this)}>Save</button>
                     <button className="cancel-btn" onClick={this.setEditState.bind(this, false)}>Cancel</button>
                 </td>
             );
         }
         return (
-            <td>
+            <td className="TodoTH3">
                 <button onClick={this.setEditState.bind(this, true)}>Edit</button>
                 <button className="delete-btn" onClick={this.deleteTask.bind(this)}>Delete</button>
             </td>
@@ -46,30 +46,31 @@ export default class TodosListItem extends React.Component {
         }
 
         return (
-            <td className="TodoTH1" onClick={this.toggleTask.bind(this)} style={taskStyle}>{task}</td>
+            <td className="TodoTH1" style={taskStyle}>{task}</td>
         );
     }
-    ChangeTaskStatus(e){
-        const {value} = e.target;
+    ChangeTaskStatus(e) {
+        const { value } = e.target;
         IsCompleted = value
-        console.log(IsCompleted,'is')
+        console.log(IsCompleted, 'is')
         // this.setState({status: value})
     }
     ChangeStatus() {
         const { isCompleted } = this.props;
         if (this.state.isEditing) {
             return (
-                <select onChange={(e)=>this.ChangeTaskStatus(e)}
-                // value={this.state.status}
-                >
-                <option disabled value="">Change Status</option>
-                    <option value='1'>Completed</option>
-                    <option value='0'>Not Completed</option>
-                </select>
+                <td>
+                    <select className="select-style" onChange={(e) => this.ChangeTaskStatus(e)}
+                    >
+                        <option disabled value="">Change Status</option>
+                        <option value='1'>Completed</option>
+                        <option value='0'>Active</option>
+                    </select>
+                </td>
             )
         }
         return (
-            <td className="TodoTH2"><span className={(isCompleted=== '1' ? "taskStatus" : "not-taskStatus")}>{isCompleted=== '1'?"Completed":"Not Completed"}</span></td>
+            <td className="TodoTH2"><span className={(isCompleted === '1' ? "taskStatus" : "not-taskStatus")}>{isCompleted === '1' ? "Completed" : "Active"}</span></td>
         );
     }
 

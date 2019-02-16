@@ -74,13 +74,13 @@ class TodosList extends React.Component {
             });
         } else{
             return (
-                <p>No records found!</p>
+                <p style={{textAlign: 'center', color: 'red'}}>No records found!</p>
             )
         }
         return (
             <div>
-                <table>
-                    <thead>
+                <table id="customers">
+                    <thead className="todo-table">
                         <tr className="TodoTR">
                             <th className="TodoTH1">Task Name</th>
                             <th className="TodoTH2">Status</th>
@@ -91,7 +91,7 @@ class TodosList extends React.Component {
                         {ViewProductList}
                     </tbody>
                 </table>
-                <p>Records {dataLenght}</p>
+                <p>Displaying {dataLenght} records</p>
             </div>
         )
     }

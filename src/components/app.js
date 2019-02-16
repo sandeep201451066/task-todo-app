@@ -87,10 +87,10 @@ class App extends React.Component {
         return (
             <div>
                 
-                <h1>TODOs</h1>
+                <h1>Task Management</h1>
                 {/* <button >All</button> */}
-                <button onClick={()=>this.Completed(1)}>Incomplete</button>
-                <button onClick={()=>this.Completed(0)}>Complete</button>
+                <button onClick={()=>this.Completed(1)}>Active</button>
+                <button onClick={()=>this.Completed(0)}>Completed</button>
                 <input placeholder="search..." onChange={(e)=>this.search(e)}></input>
 
                 <CreateTodo
